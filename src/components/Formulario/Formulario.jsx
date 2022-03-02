@@ -5,6 +5,7 @@ import entrenador from "../../assets/entrenador.png";
 import pikachu from "../../assets/pikachu.png";
 import Input from "../Input/Input";
 import Detalle from "./Detalle";
+import { FormularioProvider } from "../../context/ContextoFormulario";
 
 // En este componente tenemos nuestro formulario y dentro de él
 // tenemos los componentes que necesitan consumir nuestro estado.
@@ -34,25 +35,27 @@ const Formulario = () => {
            Si tan solo tuviesemos una manera de "encapsular" nuestros componentes
            para que puedan acceder al estado global.
           */}
-          <div className="inputs">
-            <div>
-              <p className="nombre-seccion">
-                <img src={entrenador} alt="entrenador" />
-                <span>ENTRENADOR</span>
-              </p>
-              <Input name="nombre" label="Nombre" />
-              <Input name="apellido" label="Apellido" />
-              <Input name="email" label="Email" type="email" />
+          <FormularioProvider>
+            <div className="inputs">
+              <div>
+                <p className="nombre-seccion">
+                  <img src={entrenador} alt="entrenador" />
+                  <span>ENTRENADOR</span>
+                </p>
+                <Input name="nombre" label="Nombre" />
+                <Input name="apellido" label="Apellido" />
+                <Input name="email" label="Email" type="email" />
+              </div>
+              <div>
+                <p className="nombre-seccion">
+                  <img src={pikachu} alt="pikachu" />
+                  <span>POKEMON</span>
+                </p>
+                <Input name="nombrePokemon" label="Nombre" />
+              </div>
             </div>
-            <div>
-              <p className="nombre-seccion">
-                <img src={pikachu} alt="pikachu" />
-                <span>POKEMON</span>
-              </p>
-              <Input name="nombrePokemon" label="Nombre" />
-            </div>
-          </div>
-          <Detalle />
+            <Detalle />
+          </FormularioProvider>
         </div>
       </div>
     </>

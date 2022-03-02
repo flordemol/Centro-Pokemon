@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { ContextoFormulario } from "../../context/ContextoFormulario";
 
 const Input = ({ name, label, type = "text" }) => {
   // Aqui deberíamos acceder al estado global para poder obtener los datos
   // del formulario y una manera de actualizar los mismos.
+  const { formulario, newFormulario } = useContext(ContextoFormulario);
 
   // También, utilizaremos un estado local para manejar el estado del input.
   const [valueInput, setValueInput] = useState("");
@@ -19,6 +21,11 @@ const Input = ({ name, label, type = "text" }) => {
     // cada input.
     // TIP: Podemos utilizar el nombre de cada input para guardar
     // los datos en el estado global usando una notación de { clave: valor }
+    
+    newFormulario({
+      ...formulario,
+      [name] : e.target.value
+    })
   };
 
   return (
