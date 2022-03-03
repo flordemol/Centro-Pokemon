@@ -2,8 +2,7 @@ import React, { useContext } from "react";
 import { ContextoFormulario } from "../../context/ContextoFormulario";
 
 const Detalle = () => {
-  // Aqui deberíamos obtener los datos del formulario para poder mostrarlo en
-  // la vista previa.
+  // Obtener datos del formulario para mostrarlo en la vista previa
   const { formulario } = useContext(ContextoFormulario)
   const { nombre, apellido, email, nombrePokemon } = formulario;
 

@@ -1,4 +1,3 @@
-// Aqui debemos crear nuestro contexto y nuestro provider.
 import { createContext, useState } from 'react';
 
 // Creación del Contexto y valor inicial
@@ -9,18 +8,27 @@ export const ContextoFormulario = createContext({
         email : "",
         nombrePokemon : ""
     },
-    newFormulario : () => {}
+    cargaFormulario : () => {}
 });
 
-const { Provider } = ContextoFormulario;
-
+// Creación del povider (alojará a los componentes que tendrán acceso a este contexto)
 export const FormularioProvider = ({children}) => {
+    // Estado del formulario
     const [formulario, setFormulario] = useState(""); 
 
-    const newFormulario = (data) => {
+    // Función para actualizar valores del formulario
+    const cargaFormulario = (data) => {
         setFormulario(data);
       };
 
-    return <Provider value={{formulario, newFormulario}}>{children}</Provider>
+    // Retornar provider junto con sus children
+    return (
+        <ContextoFormulario.Provider 
+            value={{
+                formulario,
+                cargaFormulario
+            }}>
+                {children}
+        </ContextoFormulario.Provider>
+    )
 }
-

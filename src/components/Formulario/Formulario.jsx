@@ -7,11 +7,6 @@ import Input from "../Input/Input";
 import Detalle from "./Detalle";
 import { FormularioProvider } from "../../context/ContextoFormulario";
 
-// En este componente tenemos nuestro formulario y dentro de él
-// tenemos los componentes que necesitan consumir nuestro estado.
-// Recuerda cual es el paso que debemos tomar para que nuestros
-// componentes puedan consumir un estado global.
-
 const Formulario = () => {
   return (
     <>
@@ -32,8 +27,7 @@ const Formulario = () => {
         </p>
         <div className="cuerpo-formulario">
           {/*
-           Si tan solo tuviesemos una manera de "encapsular" nuestros componentes
-           para que puedan acceder al estado global.
+           Provider para acceder al estado global del formulario
           */}
           <FormularioProvider>
             <div className="inputs">
