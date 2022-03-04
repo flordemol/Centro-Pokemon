@@ -1,12 +1,14 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useRef, useEffect } from "react";
 import { ContextoFormulario } from "../../context/ContextoFormulario";
 
-const Input = ({ name, label, type = "text", tipo="entrenador" }) => {
+const Input = ({ name, label, type = "text", tipo="entrenador", foco=false }) => {
   // Función del Contexto para modificar los valores del formulario
   const { handleFormulario } = useContext(ContextoFormulario);
 
   // Estado local para manejar el estado del input
   const [valueInput, setValueInput] = useState("");
+
+  const refInput = useRef(null);
 
   const onChange = (e) => {
     // Actualizar el estado local del input
@@ -26,6 +28,10 @@ const Input = ({ name, label, type = "text", tipo="entrenador" }) => {
     })
   };
 
+  useEffect(() => {
+    foco && refInput.current.focus();
+  },[foco]);
+
   return (
     <div className="input-contenedor">
       <label htmlFor={name}>{label}</label>
@@ -35,6 +41,7 @@ const Input = ({ name, label, type = "text", tipo="entrenador" }) => {
         id={name}
         onChange={onChange}
         onBlur={onBlur}
+        ref={ refInput }
       />
     </div>
   );
