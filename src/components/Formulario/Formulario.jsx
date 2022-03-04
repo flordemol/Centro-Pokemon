@@ -45,7 +45,11 @@ const Formulario = () => {
                   <img src={pikachu} alt="pikachu" />
                   <span>POKEMON</span>
                 </p>
-                <Input name="nombrePokemon" label="Nombre" />
+                <Input name="nombrePokemon" label="Nombre" tipo="pokemon" />
+                <Input name="tipoPokemon" label="Tipo" tipo="pokemon" />
+                <Input name="elementoPokemon" label="Elemento" tipo="pokemon" />
+                <Input name="alturaPokemon" label="Altura" tipo="pokemon" />
+                <Input name="edadPokemon" label="Edad" tipo="pokemon" />
               </div>
             </div>
             <Detalle />

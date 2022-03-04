@@ -1,9 +1,9 @@
 import React, { useState, useContext } from "react";
 import { ContextoFormulario } from "../../context/ContextoFormulario";
 
-const Input = ({ name, label, type = "text" }) => {
-  // Acceder al estado global para obtener los datos del formulario y una manera de actualizar los mismos
-  const { formulario, handleFormulario } = useContext(ContextoFormulario);
+const Input = ({ name, label, type = "text", tipo="entrenador" }) => {
+  // Función del Contexto para modificar los valores del formulario
+  const { handleFormulario } = useContext(ContextoFormulario);
 
   // Estado local para manejar el estado del input
   const [valueInput, setValueInput] = useState("");
@@ -17,11 +17,12 @@ const Input = ({ name, label, type = "text" }) => {
     e.preventDefault();
 
     // Actualizar el estado global con los datos de cada input
-    // (utilizar el nombre de cada input para guardar los datos en el estado global usando una notación de { clave: valor })
-    
-    handleFormulario({
-      ...formulario,
-      [name] : e.target.value
+      handleFormulario({
+      type :  (tipo === "entrenador" ? "ACTUALIZAR_ENTRENADOR" : "ACTUALIZAR_POKEMON"),
+      payload : {
+        field : name,
+        value : e.target.value
+      }
     })
   };
 

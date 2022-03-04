@@ -1,4 +1,4 @@
-import { createContext, useState, useReducer } from 'react';
+import { createContext, useReducer } from 'react';
 
 // Estado inicial
 const inicialState = {
@@ -18,7 +18,26 @@ const inicialState = {
 
 // Función reductora
 const reducer = ( state, action ) => {
-   
+    switch ( action.type ) {
+        case "ACTUALIZAR_ENTRENADOR":
+          return {
+              ...state,
+              entrenador: {
+                  ...state.entrenador,
+                  [action.payload.field] : action.payload.value 
+              }
+            }
+            case "ACTUALIZAR_POKEMON":
+          return {
+            ...state,
+            pokemon: {
+                ...state.pokemon,
+                [action.payload.field] : action.payload.value 
+            }
+            }
+        default:
+            throw new Error("No se ha recibido una acción");
+      }
 }
 
 // Creación del Contexto
@@ -30,8 +49,11 @@ export const FormularioProvider = ({ children }) => {
     const [ formulario, dispatch ] = useReducer( reducer, inicialState ); 
 
     // Acción a ejecutar
-    const handleFormulario = ( type, data ) => {
-        // dispatch
+    const handleFormulario = ({ type, payload }) => {
+        dispatch({
+            type,
+            payload
+        })
       };
 
     // Retornar provider junto con sus children

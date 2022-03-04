@@ -4,7 +4,19 @@ import { ContextoFormulario } from "../../context/ContextoFormulario";
 const Detalle = () => {
   // Obtener datos del formulario para mostrarlo en la vista previa
   const { formulario } = useContext(ContextoFormulario)
-  const { nombre, apellido, email, nombrePokemon } = formulario;
+  const { 
+    nombre,
+    apellido,
+    email
+  } = formulario?.entrenador;
+
+  const {
+    nombrePokemon,
+    tipoPokemon,
+    elementoPokemon,
+    alturaPokemon,
+    edadPokemon
+  } = formulario?.pokemon;
 
   return (
     <div className="detalle-formulario">
@@ -23,6 +35,10 @@ const Detalle = () => {
         <h4>Datos del Pokémon</h4>
         <div className="fila">
           <p>Nombre: { nombrePokemon }</p>
+          <p>Tipo: { tipoPokemon }</p>
+          <p>Elemento: { elementoPokemon }</p>
+          <p>Altura: { alturaPokemon }</p>
+          <p>Edad: { edadPokemon }</p>
         </div>
       </section>
       <button
