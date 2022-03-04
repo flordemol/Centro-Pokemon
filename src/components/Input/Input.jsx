@@ -3,7 +3,7 @@ import { ContextoFormulario } from "../../context/ContextoFormulario";
 
 const Input = ({ name, label, type = "text" }) => {
   // Acceder al estado global para obtener los datos del formulario y una manera de actualizar los mismos
-  const { formulario, cargaFormulario } = useContext(ContextoFormulario);
+  const { formulario, handleFormulario } = useContext(ContextoFormulario);
 
   // Estado local para manejar el estado del input
   const [valueInput, setValueInput] = useState("");
@@ -19,7 +19,7 @@ const Input = ({ name, label, type = "text" }) => {
     // Actualizar el estado global con los datos de cada input
     // (utilizar el nombre de cada input para guardar los datos en el estado global usando una notación de { clave: valor })
     
-    cargaFormulario({
+    handleFormulario({
       ...formulario,
       [name] : e.target.value
     })

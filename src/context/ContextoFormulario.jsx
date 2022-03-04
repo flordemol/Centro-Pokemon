@@ -1,24 +1,37 @@
-import { createContext, useState } from 'react';
+import { createContext, useState, useReducer } from 'react';
 
-// Creación del Contexto y valor inicial
-export const ContextoFormulario = createContext({
-    formulario : {
+// Estado inicial
+const inicialState = {
+    entrenador : {
         nombre : "",
         apellido : "",
-        email : "",
-        nombrePokemon : ""
+        email : ""
     },
-    cargaFormulario : () => {}
-});
+    pokemon : {
+        nombrePokemon : "",
+        tipoPokemon : "",
+        elementoPokemon : "",
+        alturaPokemon : "",
+        edadPokemon : ""
+    }
+}
+
+// Función reductora
+const reducer = ( state, action ) => {
+   
+}
+
+// Creación del Contexto
+export const ContextoFormulario = createContext();
 
 // Creación del povider (alojará a los componentes que tendrán acceso a este contexto)
-export const FormularioProvider = ({children}) => {
+export const FormularioProvider = ({ children }) => {
     // Estado del formulario
-    const [formulario, setFormulario] = useState(""); 
+    const [ formulario, dispatch ] = useReducer( reducer, inicialState ); 
 
-    // Función para actualizar valores del formulario
-    const cargaFormulario = (data) => {
-        setFormulario(data);
+    // Acción a ejecutar
+    const handleFormulario = ( type, data ) => {
+        // dispatch
       };
 
     // Retornar provider junto con sus children
@@ -26,9 +39,9 @@ export const FormularioProvider = ({children}) => {
         <ContextoFormulario.Provider 
             value={{
                 formulario,
-                cargaFormulario
+                handleFormulario
             }}>
-                {children}
+                { children }
         </ContextoFormulario.Provider>
     )
 }
