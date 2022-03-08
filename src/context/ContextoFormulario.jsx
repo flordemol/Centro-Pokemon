@@ -1,44 +1,5 @@
 import { createContext, useReducer } from 'react';
-
-// Estado inicial
-const inicialState = {
-    entrenador : {
-        nombre : "",
-        apellido : "",
-        email : ""
-    },
-    pokemon : {
-        nombrePokemon : "",
-        tipoPokemon : "",
-        elementoPokemon : "",
-        alturaPokemon : "",
-        edadPokemon : ""
-    }
-}
-
-// Función reductora
-const reducer = ( state, action ) => {
-    switch ( action.type ) {
-        case "ACTUALIZAR_ENTRENADOR":
-          return {
-              ...state,
-              entrenador: {
-                  ...state.entrenador,
-                  [action.payload.field] : action.payload.value 
-              }
-            }
-            case "ACTUALIZAR_POKEMON":
-          return {
-            ...state,
-            pokemon: {
-                ...state.pokemon,
-                [action.payload.field] : action.payload.value 
-            }
-            }
-        default:
-            throw new Error("No se ha recibido una acción");
-      }
-}
+import { inicialState, reducer } from '../reducer/reducerFormulario';
 
 // Creación del Contexto
 export const ContextoFormulario = createContext();
@@ -48,7 +9,15 @@ export const FormularioProvider = ({ children }) => {
     // Estado del formulario
     const [ formulario, dispatch ] = useReducer( reducer, inicialState ); 
 
-    // Acción a ejecutar
+    
+   /**
+   * Funcion para actualizar el Form desde inputs
+   * @author Florencia De Mollein <florenciademollein@gmail.com>
+   * @param {string} type indica la acción a realizar ("ACTUALIZAR_ENTRENADOR" o "ACTUALIZAR_POKEMON")
+   * @param {*} payload es un objeto que contiene 'field' y 'value'
+   * 
+   * Dispatch envía al reducer 'type' y 'payload'
+   */
     const handleFormulario = ({ type, payload }) => {
         dispatch({
             type,
