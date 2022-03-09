@@ -7,6 +7,13 @@ import Input from "../Input/Input";
 import Detalle from "./Detalle";
 import { FormularioProvider } from "../../context/ContextoFormulario";
 
+/**
+* Componente que muestra los inputs del formulario
+*
+* @author Florencia De Mollein <florenciademollein@gmail.com>
+* @return {JSX.Element}
+*/
+
 const Formulario = () => {
   return (
     <>

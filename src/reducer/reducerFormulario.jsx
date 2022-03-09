@@ -1,4 +1,20 @@
-// Estado inicial
+/**
+ * Estado inicial del formulario.
+ * @type {{
+ *    entrenador:{
+ *      nombre: string,
+ *      apellido: string,
+ *      email: string
+ *    },
+ *    pokemon: {
+ *      nombrePokemon: string,
+ *      tipoPokemon: string,
+ *      elementoPokemon: string,
+ *      alturaPokemon: string,
+ *      edadPokemon: string
+ *   }
+ * }}}
+ */
 export const inicialState = {
     entrenador : {
         nombre : "",
@@ -17,8 +33,13 @@ export const inicialState = {
 /**
 * Reducer es el reductor del contexto, va a recibir el estado y acciones.
 * @author Florencia De Mollein <florenciademollein@gmail.com>
-* @param {*} state es el estado actual de nuestro contexto.
-* @param {*} action es la acción que recibimos de un dispatcher. Desestructuramos action en type y payload.
+* @param {initialState} state es el estado actual de nuestro contexto.
+* @param {{
+*     type: string,
+*     payload : {
+*       [string]: string,    
+*     }
+* }} action es la acción que recibimos de un dispatcher. Desestructuramos action en type y payload.
 * El resultado de la función reductora es el estado del contexto actualizado, de acuerdo a la información (field y value) y acción solicitada.
 */
 

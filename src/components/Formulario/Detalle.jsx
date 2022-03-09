@@ -1,6 +1,13 @@
 import React, { useContext } from "react";
 import { ContextoFormulario } from "../../context/ContextoFormulario";
 
+/**
+ * Componente que muestra el detalle de lo completado en el formulario
+ * 
+ * @author Florencia De Mollein <florenciademollein@gmail.com>
+ * @returns {JSX.Element}
+ */
+
 const Detalle = () => {
   // Obtener datos del formulario para mostrarlo en la vista previa
   const { formulario } = useContext(ContextoFormulario)

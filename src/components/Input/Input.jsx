@@ -1,6 +1,20 @@
 import React, { useState, useContext, useRef, useEffect } from "react";
 import { ContextoFormulario } from "../../context/ContextoFormulario";
 
+/**
+ * Componente que maneja los inputs del formulario.
+ *
+ * @author Florencia De Mollein <florenciademollein@gmail.com>
+ * @param {{
+ *    name: string,
+ *    label: string,
+ *    type: string,
+ *    tipo: string,
+ *    foco: boolean,
+ * }} props
+ * @returns {JSX.Element}
+ */
+
 const Input = ({ name, label, type = "text", tipo="entrenador", foco=false }) => {
   // Función del Contexto para modificar los valores del formulario
   const { handleFormulario } = useContext(ContextoFormulario);
@@ -14,7 +28,7 @@ const Input = ({ name, label, type = "text", tipo="entrenador", foco=false }) =>
   * La función onChange responde al evento onChange del input y guarda el value en el estado local del componente
   * 
   * @author Florencia De Mollein <florenciademollein@gmail.com>
-  * @param {InputEvent} e InputEvent del input
+  * @param {Event} e InputEvent del input
   */
   const onChange = (e) => {
     // Actualizar el estado local del input
@@ -26,7 +40,7 @@ const Input = ({ name, label, type = "text", tipo="entrenador", foco=false }) =>
   * La información que se envía al contexto es: tipo (entrenador o pokemon) y el payload que contiene nombre del campo a actualizar y su valor
   * 
   * @author Florencia De Mollein <florenciademollein@gmail.com>
-  * @param {InputEvent} e InputEvent del input
+  * @param {Event} e InputEvent del input
   */
   const onBlur = (e) => {
     e.preventDefault();
