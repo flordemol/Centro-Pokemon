@@ -21,10 +21,12 @@ export const FormularioProvider = ({ children }) => {
    /**
    * Funcion para actualizar el Form desde inputs
    * @author Florencia De Mollein <florenciademollein@gmail.com>
-   * @param {string} type indica la acción a realizar ("ACTUALIZAR_ENTRENADOR" o "ACTUALIZAR_POKEMON")
    * @param {{
-   *    [string]: string,
-   * }} payload es un objeto que contiene 'field' y 'value'
+   *   type: string,
+    *  payload : {
+    *       [string]: string,    
+    *     }
+   * }} valorInput Es un objeto que contiene type (la acción a realizar: "ACTUALIZAR_ENTRENADOR" o "ACTUALIZAR_POKEMON") y payload es un objeto que contiene como propiedades 'field' y 'value'
    * 
    * Dispatch envía al reducer 'type' y 'payload'
    */
