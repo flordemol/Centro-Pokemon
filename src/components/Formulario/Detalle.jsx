@@ -58,4 +58,6 @@ const Detalle = () => {
   );
 };
 
+Detalle.propTypes = {};
+
 export default Detalle;

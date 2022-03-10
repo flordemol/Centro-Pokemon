@@ -43,20 +43,20 @@ const Formulario = () => {
                   <img src={entrenador} alt="entrenador" />
                   <span>ENTRENADOR</span>
                 </p>
-                <Input name="nombre" label="Nombre" foco={true}/>
-                <Input name="apellido" label="Apellido" />
-                <Input name="email" label="Email" type="email" />
+                <Input name="nombre" label="Nombre" type="text" seccionForm="entrenador" foco={true} />
+                <Input name="apellido" label="Apellido" type="text" seccionForm="entrenador" />
+                <Input name="email" label="Email" type="email" seccionForm="entrenador" />
               </div>
               <div>
                 <p className="nombre-seccion">
                   <img src={pikachu} alt="pikachu" />
                   <span>POKEMON</span>
                 </p>
-                <Input name="nombrePokemon" label="Nombre" tipo="pokemon" />
-                <Input name="tipoPokemon" label="Tipo" tipo="pokemon" />
-                <Input name="elementoPokemon" label="Elemento" tipo="pokemon" />
-                <Input name="alturaPokemon" label="Altura" tipo="pokemon" />
-                <Input name="edadPokemon" label="Edad" tipo="pokemon" />
+                <Input name="nombrePokemon" label="Nombre" type="text" seccionForm="pokemon" />
+                <Input name="tipoPokemon" label="Tipo" type="text" seccionForm="pokemon" />
+                <Input name="elementoPokemon" label="Elemento" type="text" seccionForm="pokemon" />
+                <Input name="alturaPokemon" label="Altura" type="text" seccionForm="pokemon" />
+                <Input name="edadPokemon" label="Edad" type="text" seccionForm="pokemon" />
               </div>
             </div>
             <Detalle />
@@ -66,5 +66,7 @@ const Formulario = () => {
     </>
   );
 };
+
+Formulario.propTypes = {};
 
 export default Formulario;

@@ -1,4 +1,5 @@
 import React, { useState, useContext, useRef, useEffect } from "react";
+import PropTypes from 'prop-types';
 import { ContextoFormulario } from "../../context/ContextoFormulario";
 
 /**
@@ -9,13 +10,13 @@ import { ContextoFormulario } from "../../context/ContextoFormulario";
  *    name: string,
  *    label: string,
  *    type: string,
- *    tipo: string,
+ *    seccionForm: string,
  *    foco: boolean,
  * }} props
  * @returns {JSX.Element}
  */
 
-const Input = ({ name, label, type = "text", tipo="entrenador", foco=false }) => {
+const Input = ({ name, label, type, seccionForm, foco=false }) => {
   // Función del Contexto para modificar los valores del formulario
   const { handleFormulario } = useContext(ContextoFormulario);
 
@@ -37,7 +38,7 @@ const Input = ({ name, label, type = "text", tipo="entrenador", foco=false }) =>
 
   /**
   * La función onBlur responde al evento onBlur del input y actualiza el estado global ("ContextoFormulario") con los valores de cada input.
-  * La información que se envía al contexto es: tipo (entrenador o pokemon) y el payload que contiene nombre del campo a actualizar y su valor
+  * La información que se envía al contexto es: la acción a realizar (que depende de 'seccionForm') y el payload que contiene nombre del campo a actualizar y su valor
   * 
   * @author Florencia De Mollein <florenciademollein@gmail.com>
   * @param {Event} e InputEvent del input
@@ -47,7 +48,7 @@ const Input = ({ name, label, type = "text", tipo="entrenador", foco=false }) =>
 
     // Actualizar el estado global con los datos de cada input
       handleFormulario({
-      type :  (tipo === "entrenador" ? "ACTUALIZAR_ENTRENADOR" : "ACTUALIZAR_POKEMON"),
+      type :  (seccionForm === "entrenador" ? "ACTUALIZAR_ENTRENADOR" : "ACTUALIZAR_POKEMON"),
       payload : {
         field : name,
         value : e.target.value
@@ -73,6 +74,15 @@ const Input = ({ name, label, type = "text", tipo="entrenador", foco=false }) =>
       />
     </div>
   );
+};
+
+
+Input.propTypes = {
+  name : PropTypes.string.isRequired,
+  label : PropTypes.string.isRequired,
+  type : PropTypes.string.isRequired,
+  seccionForm : PropTypes.string.isRequired,
+  foco : PropTypes.bool,
 };
 
 export default Input;

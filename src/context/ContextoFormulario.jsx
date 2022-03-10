@@ -1,4 +1,5 @@
 import { createContext, useReducer } from 'react';
+import PropTypes from 'prop-types';
 import { inicialState, reducer } from '../reducer/reducerFormulario';
 
 // Creación del Contexto
@@ -44,4 +45,8 @@ export const FormularioProvider = ({ children }) => {
                 { children }
         </ContextoFormulario.Provider>
     )
+}
+
+FormularioProvider.propTypes = {
+    children : PropTypes.node.isRequired,
 }
