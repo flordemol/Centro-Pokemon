@@ -1,6 +1,6 @@
 import { createContext, useReducer } from 'react';
 import PropTypes from 'prop-types';
-import { inicialState, reducer } from '../reducer/reducerFormulario';
+import { initialState, reducer } from '../reducer/reducerFormulario';
 
 // Creación del Contexto
 export const ContextoFormulario = createContext();
@@ -16,7 +16,7 @@ export const ContextoFormulario = createContext();
  */
 export const FormularioProvider = ({ children }) => {
     // Estado del formulario
-    const [ formulario, dispatch ] = useReducer( reducer, inicialState ); 
+    const [ formulario, dispatch ] = useReducer( reducer, initialState ); 
 
    /**
    * Funcion para actualizar el Form desde inputs

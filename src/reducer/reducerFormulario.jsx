@@ -15,7 +15,7 @@
  *   }
  * }} 
  */
-export const inicialState = {
+export const initialState = {
     entrenador : {
         nombre : "",
         apellido : "",
@@ -40,7 +40,7 @@ export const inicialState = {
 *       [string]: string,    
 *     }
 * }} action es la acción que recibimos de un dispatcher. Desestructuramos action en type y payload.
-*   @returns {initialState}
+*   @returns {newState}
 *
 * El resultado de la función reductora es el estado del contexto actualizado, de acuerdo a la información (field y value) y acción solicitada.
 */

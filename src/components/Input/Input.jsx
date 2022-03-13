@@ -82,7 +82,7 @@ Input.propTypes = {
   label : PropTypes.string.isRequired,
   type : PropTypes.string.isRequired,
   seccionForm : PropTypes.string.isRequired,
-  foco : PropTypes.bool,
+  foco : PropTypes.bool.isRequired,
 };
 
 export default Input;
