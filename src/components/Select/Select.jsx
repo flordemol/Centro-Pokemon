@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import PropTypes from 'prop-types';
 import { ContextoFormulario } from "../../context/ContextoFormulario";
+import { capitalizarPrimeraLetra } from "../../utils/capitalizarPrimeraLetra";
 
 /**
  * Componente que maneja los select del formulario.
@@ -10,12 +11,13 @@ import { ContextoFormulario } from "../../context/ContextoFormulario";
  *    name: string,
  *    label: string,
  *    seccionForm: string,
+ *    options: array,
  *    valueDefault: string,
  * }} props
  * @returns {JSX.Element}
  */
 
-const Select = ({name, label, seccionForm, valueDefault = ""}) => {
+const Select = ({name, label, seccionForm, options = [], valueDefault = ""}) => {
 
     const { handleFormulario } = useContext(ContextoFormulario);
     const [, setValueSelect] = useState("");
@@ -44,11 +46,11 @@ const Select = ({name, label, seccionForm, valueDefault = ""}) => {
   return (
     <div className="select-contenedor">
         <label htmlFor={name}>{label}</label>
-        <select name={name} id={name} onChange={onChange} >
-            <option value="">{valueDefault}</option>
-            <option value="tipo1">tipo 1</option>
-            <option value="tipo2">tipo 2</option>
-            <option value="tipo3">tipo 3</option>
+        <select name={name} id={name} onChange={onChange} defaultValue="" >
+            <option value="" disabled>{valueDefault}</option>
+            {
+              options?.map((option, index) =>  <option key={index} value={option.name}>{capitalizarPrimeraLetra(option.name)}</option>)
+            }
         </select>
     </div>
   );
@@ -58,7 +60,8 @@ Select.propTypes = {
     name : PropTypes.string.isRequired,
     label : PropTypes.string.isRequired,
     seccionForm : PropTypes.string.isRequired,
-    valueDefault : PropTypes.string.isRequired,
+    options : PropTypes.array,
+    valueDefault : PropTypes.string,
 };
 
 export default Select;

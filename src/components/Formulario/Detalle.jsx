@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { ContextoFormulario } from "../../context/ContextoFormulario";
+import { capitalizarPrimeraLetra } from "../../utils/capitalizarPrimeraLetra";
 
 /**
  * Componente que muestra el detalle de lo completado en el formulario
@@ -42,7 +43,7 @@ const Detalle = () => {
         <h4>Datos del Pokémon</h4>
         <div className="fila">
           <p>Nombre: { nombrePokemon }</p>
-          <p>Tipo: { tipoPokemon }</p>
+          <p>Tipo: { capitalizarPrimeraLetra(tipoPokemon) }</p>
           <p>Elemento: { elementoPokemon }</p>
           <p>Altura: { alturaPokemon }</p>
           <p>Edad: { edadPokemon }</p>
