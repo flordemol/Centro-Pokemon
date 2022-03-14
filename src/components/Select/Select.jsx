@@ -1,14 +1,21 @@
 import React, { useState, useContext } from "react";
+import PropTypes from 'prop-types';
 import { ContextoFormulario } from "../../context/ContextoFormulario";
 
 /**
-* Componente que maneja los select del formulario.
-* 
-* @author Florencia De Mollein <florenciademollein@gmail.com>
-* @return {JSX.Element}
-*/
+ * Componente que maneja los select del formulario.
+ *
+ * @author Florencia De Mollein <florenciademollein@gmail.com>
+ * @param {{
+ *    name: string,
+ *    label: string,
+ *    seccionForm: string,
+ *    valueDefault: string,
+ * }} props
+ * @returns {JSX.Element}
+ */
 
-const Select = ({name, label, seccionForm, valueDefault}) => {
+const Select = ({name, label, seccionForm, valueDefault = ""}) => {
 
     const { handleFormulario } = useContext(ContextoFormulario);
     const [, setValueSelect] = useState("");
@@ -45,6 +52,13 @@ const Select = ({name, label, seccionForm, valueDefault}) => {
         </select>
     </div>
   );
+};
+
+Select.propTypes = {
+    name : PropTypes.string.isRequired,
+    label : PropTypes.string.isRequired,
+    seccionForm : PropTypes.string.isRequired,
+    valueDefault : PropTypes.string.isRequired,
 };
 
 export default Select;

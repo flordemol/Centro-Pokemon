@@ -76,7 +76,6 @@ const Input = ({ name, label, type, seccionForm, foco=false }) => {
   );
 };
 
-
 Input.propTypes = {
   name : PropTypes.string.isRequired,
   label : PropTypes.string.isRequired,
