@@ -8,13 +8,7 @@ import Input from "../Input/Input";
 import Select from "../Select/Select";
 import Detalle from "./Detalle";
 import { FormularioProvider } from "../../context/ContextoFormulario";
-
-// Función para obtener tipos de pokemones de la API
-const getTiposPokemon = async () => {
-  const response = await fetch("https://pokeapi.co/api/v2/type/");
-  const { results } = await response.json();
-  return results;
-};
+import { getTiposPokemon } from "../servicios/tiposPokemones";
 
 /**
 * Componente que muestra los inputs del formulario
@@ -25,7 +19,7 @@ const getTiposPokemon = async () => {
 
 const Formulario = () => {
 
-  const { data } = useQuery("TiposPokemon", getTiposPokemon);
+  const { data, isLoading, isError } = useQuery("TiposPokemon", getTiposPokemon);
 
   return (
     <>
@@ -65,7 +59,13 @@ const Formulario = () => {
                   <span>POKEMON</span>
                 </p>
                 <Input name="nombrePokemon" label="Nombre" type="text" seccionForm="pokemon" />
-                <Select name="tipoPokemon" label="Tipo" seccionForm="pokemon" options={data} valueDefault="Seleciona el tipo de pokemon"/>
+                <Select 
+                  name="tipoPokemon"
+                  label="Tipo"
+                  seccionForm="pokemon"
+                  options={data}
+                  valueDefault="Seleciona el tipo de pokemon"
+                  disabled={isLoading || isError}/>
                 <Input name="elementoPokemon" label="Elemento" type="text" seccionForm="pokemon" />
                 <Input name="alturaPokemon" label="Altura" type="text" seccionForm="pokemon" />
                 <Input name="edadPokemon" label="Edad" type="text" seccionForm="pokemon" />

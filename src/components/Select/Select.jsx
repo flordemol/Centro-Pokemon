@@ -13,13 +13,14 @@ import { capitalizarPrimeraLetra } from "../../utils/capitalizarPrimeraLetra";
  *    seccionForm: string,
  *    options: array,
  *    valueDefault: string,
+ *    disabled:boolean,
  * }} props
  * @returns {JSX.Element}
  */
 
-const Select = ({name, label, seccionForm, options = [], valueDefault = ""}) => {
+const Select = ({ name, label, seccionForm, options = [], valueDefault = "", disabled=false }) => {
 
-    const { handleFormulario } = useContext(ContextoFormulario);
+  const { handleFormulario } = useContext(ContextoFormulario);
     const [, setValueSelect] = useState("");
 
   /**
@@ -46,7 +47,7 @@ const Select = ({name, label, seccionForm, options = [], valueDefault = ""}) => 
   return (
     <div className="select-contenedor">
         <label htmlFor={name}>{label}</label>
-        <select name={name} id={name} onChange={onChange} defaultValue="" >
+        <select name={name} id={name} onChange={onChange} defaultValue="" disabled={disabled} >
             <option value="" disabled>{valueDefault}</option>
             {
               options?.map((option, index) =>  <option key={index} value={option.name}>{capitalizarPrimeraLetra(option.name)}</option>)
@@ -62,6 +63,7 @@ Select.propTypes = {
     seccionForm : PropTypes.string.isRequired,
     options : PropTypes.array,
     valueDefault : PropTypes.string,
+    disabled : PropTypes.bool.isRequired
 };
 
 export default Select;
