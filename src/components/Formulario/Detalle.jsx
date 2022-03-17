@@ -2,6 +2,23 @@ import React, { useContext } from "react";
 import { ContextoFormulario } from "../../context/ContextoFormulario";
 import { capitalizarPrimeraLetra } from "../../utils/capitalizarPrimeraLetra";
 
+// Función que se encarga de enviar el formulario al servidor.
+const enviarFormulario = async (data) => {
+  const response = await fetch("https://jsonplaceholder.typicode.com/todos", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+
+  if (response.ok) {
+    alert("Solicitud enviada :)");
+    console.log(response)
+    return await response.json();
+  }
+};
+
 /**
  * Componente que muestra el detalle de lo completado en el formulario
  * 
@@ -51,7 +68,7 @@ const Detalle = () => {
       </section>
       <button
         className="boton-enviar"
-        onClick={() => alert("Solicitud enviada :)")}
+        onClick={() => enviarFormulario(formulario)}
       >
         Enviar Solicitud
       </button>
