@@ -19,6 +19,7 @@ import { getTiposPokemon } from "../servicios/tiposPokemones";
 
 const Formulario = () => {
 
+  // Usando useQuery obtenemos los tipos de Pokemon y las variables isLoading e isError para deshabilitar el input
   const { data, isLoading, isError } = useQuery("TiposPokemon", getTiposPokemon);
 
   return (

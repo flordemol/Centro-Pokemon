@@ -1,8 +1,9 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
+import { useMutation } from "react-query";
 import { ContextoFormulario } from "../../context/ContextoFormulario";
 import { capitalizarPrimeraLetra } from "../../utils/capitalizarPrimeraLetra";
 
-// Función que se encarga de enviar el formulario al servidor.
+// Función para enviar formulario al servidor cuando se invoca el metodo mutate
 const enviarFormulario = async (data) => {
   const response = await fetch("https://jsonplaceholder.typicode.com/todos", {
     method: "POST",
@@ -13,9 +14,10 @@ const enviarFormulario = async (data) => {
   });
 
   if (response.ok) {
-    alert("Solicitud enviada :)");
-    console.log(response)
-    return await response.json();
+    console.log({'data' : data, 'response' : response})
+    return response.json();
+  } else {
+    throw new Error("Error al enviar el formulario");
   }
 };
 
@@ -42,6 +44,9 @@ const Detalle = () => {
     alturaPokemon,
     edadPokemon
   } = formulario?.pokemon;
+  
+  // Uso del Hook useMutation para enviar la información del formulario al servidor
+  const { data, isLoading, isError, mutate, isSuccess } = useMutation(enviarFormulario);
 
   return (
     <div className="detalle-formulario">
@@ -68,10 +73,13 @@ const Detalle = () => {
       </section>
       <button
         className="boton-enviar"
-        onClick={() => enviarFormulario(formulario)}
+        onClick={() => mutate(formulario)}
       >
         Enviar Solicitud
       </button>
+      { isLoading && <div className="loading-txt">Enviando formulario...</div> }
+      { isSuccess && <div className="success-txt">Formulario enviado</div> }
+      { isError && <div className="error-txt">☹ Error al enviar el formulario, por favor verifique la información ingresada</div> }
     </div>
   );
 };

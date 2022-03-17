@@ -212,3 +212,18 @@ h1 {
 .volver {
   justify-self: end;
 }
+
+.loading-txt {
+  background-color: #ed5564;
+  color: white;
+}
+
+.success-txt {
+  color: seagreen;
+  border-top: 1px solid seagreen;
+}
+
+.error-txt {
+  background-color: red;
+  color: white;
+}

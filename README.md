@@ -20,6 +20,10 @@ Documentar código aplicando JSDoc
 
 Documentar código aplicando PropTypes
 
-**5) React Query**
+**5) React Query - useQuery**
 
 Reemplazar input por select. Usar useQuery y conectarnos con la API para obtener el listado de los tipos de Pokemon existentes
+
+**5) React Query - useMutation**
+
+Uso del Hook useMutation para enviar la información del formulario al servidor
