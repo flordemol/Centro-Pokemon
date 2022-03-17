@@ -1,48 +1,25 @@
-# Formulario Centro Pokemon
+# Centro Pokemon de Ash
 
-Bienvenidos al primer proyecto integrador de la materia de especialización en
-Frontend I. En esta oportunidad, ayudaremos a nuestro amigo Ash a construir un
-formulario para que los entrenadores puedan atender a sus pokemons en el nuevo centro
-que Ash tiene en pueblo paleta.
+Proyecto integrador de la materia Especialización Frontend I
 
-## ¡Comenzamos!
+## Ejercitación:
 
-Una vez clonado el repositorio, lo primero que debemos hacer es instalar las dependencias.
-Para ello puedes utilizar alguno de los siguientes comandos:
+**1) useState**
 
-```
-npm install
-```
+Guardar info en estado local del formulario
 
-o
+**2) useContext y useReducer**
 
-```
-yarn install
-```
+Agregar campos al formulario para hacerlo más complejo y guardar info en contexto global
 
-Luego, puedes iniciar el proyecto con los comandos
+**3) JSDoc**
 
-```
-npm start
-```
+Documentar código aplicando JSDoc
 
-o
+**4) PropTypes**
 
-```
-yarn start
-```
+Documentar código aplicando PropTypes
 
-Ahora, tu proyecto se encontrará en la siguiente url: [http://localhost:3000](http://localhost:3000).
+**5) React Query**
 
-## Primeros pasos
-
-Recuerda que el objetivo de esta clase es que puedas agregar la lógica necesaria para implementar:
-
-- Un estado local, que te permita controlar el valor de cada input, y
-- Un estado global, para poder compartir el valor de los inputs con el formulario
-  de vista previa.
-
-A lo largo del código, encontrarás algunos comentarios y sugerencias que te orientarán
-acerca de los pasos necesarios para completar la actividad.
-
-¡Manos a la obra!
+Reemplazar input por select. Usar useQuery y conectarnos con la API para obtener el listado de los tipos de Pokemon existentes
