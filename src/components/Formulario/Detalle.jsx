@@ -42,7 +42,8 @@ const Detalle = () => {
     tipoPokemon,
     elementoPokemon,
     alturaPokemon,
-    edadPokemon
+    edadPokemon,
+    especiePokemon
   } = formulario?.pokemon;
   
   // Uso del Hook useMutation para enviar la información del formulario al servidor
@@ -69,6 +70,7 @@ const Detalle = () => {
           <p>Elemento: { elementoPokemon }</p>
           <p>Altura: { alturaPokemon }</p>
           <p>Edad: { edadPokemon }</p>
+          <p>Especie: {especiePokemon}</p>
         </div>
       </section>
       <button

@@ -6,6 +6,7 @@ import entrenador from "../../assets/entrenador.png";
 import pikachu from "../../assets/pikachu.png";
 import Input from "../Input/Input";
 import Select from "../Select/Select";
+import InputEspecie from "../InputEspecie/InputEspecie";
 import Detalle from "./Detalle";
 import { FormularioProvider } from "../../context/ContextoFormulario";
 import { getTiposPokemon } from "../servicios/tiposPokemones";
@@ -70,6 +71,7 @@ const Formulario = () => {
                 <Input name="elementoPokemon" label="Elemento" type="text" seccionForm="pokemon" />
                 <Input name="alturaPokemon" label="Altura" type="text" seccionForm="pokemon" />
                 <Input name="edadPokemon" label="Edad" type="text" seccionForm="pokemon" />
+                <InputEspecie name="especiePokemon" label="Especie" seccionForm="pokemon"/>
               </div>
             </div>
             <Detalle />
