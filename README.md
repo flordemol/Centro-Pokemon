@@ -24,6 +24,10 @@ Documentar código aplicando PropTypes
 
 Reemplazar input por select. Usar useQuery y conectarnos con la API para obtener el listado de los tipos de Pokemon existentes
 
-**5) React Query - useMutation**
+**6) React Query - useMutation**
 
 Uso del Hook useMutation para enviar la información del formulario al servidor
+
+**7) React Query - Paginación**
+
+Agregar campo Especie y usar useQuery para paginar los resultados

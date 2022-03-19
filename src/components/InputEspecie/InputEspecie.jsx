@@ -62,8 +62,8 @@ const InputEspecie = ({ name, label, seccionForm }) => {
             { isError && <p>Error al cargar especies...</p>}
           </div>
           <div className="paginador">
-            <button className="boton-anterior" onClick={() => setPageOffset(pageOffset - 20)}>Anterior</button>
-            <button className="boton-siguiente"  onClick={() => setPageOffset(pageOffset + 20)}>Siguiente</button>
+            <button className="boton-anterior" disabled={!data?.previous} onClick={() => setPageOffset(pageOffset - 20)}>Anterior</button>
+            <button className="boton-siguiente" disabled={!data?.next} onClick={() => setPageOffset(pageOffset + 20)}>Siguiente</button>
           </div>
         </div>
       )}

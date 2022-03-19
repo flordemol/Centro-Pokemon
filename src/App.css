@@ -298,6 +298,14 @@ h1 {
   box-shadow: none;
 }
 
+.boton-anterior:disabled,
+.boton-siguiente:disabled {
+  background-color: grey;
+  border: 2px solid grey;
+  color: rgb(216, 213, 213);
+  box-shadow: none;
+}
+
 .boton-anterior {
   margin-right: 1rem;
 }
