@@ -9,7 +9,7 @@ import Select from "../Select/Select";
 import InputEspecie from "../InputEspecie/InputEspecie";
 import Detalle from "./Detalle";
 import { FormularioProvider } from "../../context/ContextoFormulario";
-import { getTiposPokemon } from "../servicios/tiposPokemones";
+import { getTiposPokemon } from "../servicios/getData";
 
 /**
 * Componente que muestra los inputs del formulario
@@ -19,7 +19,7 @@ import { getTiposPokemon } from "../servicios/tiposPokemones";
 */
 
 const Formulario = () => {
-
+  
   // Usando useQuery obtenemos los tipos de Pokemon y las variables isLoading e isError para deshabilitar el input
   const { data, isLoading, isError } = useQuery("TiposPokemon", getTiposPokemon);
 
@@ -71,7 +71,7 @@ const Formulario = () => {
                 <Input name="elementoPokemon" label="Elemento" type="text" seccionForm="pokemon" />
                 <Input name="alturaPokemon" label="Altura" type="text" seccionForm="pokemon" />
                 <Input name="edadPokemon" label="Edad" type="text" seccionForm="pokemon" />
-                <InputEspecie name="especiePokemon" label="Especie" seccionForm="pokemon"/>
+                <InputEspecie name="especiePokemon" label="Especie" seccionForm="pokemon" />
               </div>
             </div>
             <Detalle />

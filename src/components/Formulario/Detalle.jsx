@@ -49,6 +49,15 @@ const Detalle = () => {
   // Uso del Hook useMutation para enviar la información del formulario al servidor
   const { data, isLoading, isError, mutate, isSuccess } = useMutation(enviarFormulario);
 
+   // Uso de useEffect para que se ejecute una vez realiza la mutación y mostrar el mensaje de éxito o error
+   useEffect(() => {
+    if (isSuccess) {
+      alert(`Formulario enviado correctamente, id ${data ? data?.id : ""}`);
+    } else if (isError) {
+      alert("Error al enviar el formulario. Por favor intente nuevamente");
+    }
+  }, [isSuccess, data, isError]);
+
   return (
     <div className="detalle-formulario">
       <div className="encabezado">
@@ -70,7 +79,7 @@ const Detalle = () => {
           <p>Elemento: { elementoPokemon }</p>
           <p>Altura: { alturaPokemon }</p>
           <p>Edad: { edadPokemon }</p>
-          <p>Especie: {especiePokemon}</p>
+          <p>Especie: { especiePokemon }</p>
         </div>
       </section>
       <button

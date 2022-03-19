@@ -1,16 +1,29 @@
 import React, { useState, useContext } from "react";
+import { useQuery } from "react-query";
+import PropTypes from 'prop-types';
 import { ContextoFormulario } from "../../context/ContextoFormulario";
+import { getEspeciesPokemon } from "../servicios/getData";
 
-// Debemos reemplazar este array por los datos provenientes de la API.
-const especies = [
-  { name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon-species/1/" },
-  { name: "ivysaur", url: "https://pokeapi.co/api/v2/pokemon-species/2/" },
-  { name: "venusaur", url: "https://pokeapi.co/api/v2/pokemon-species/3/" },
-];
+/**
+ * Componente que maneja el input de selección de especies.
+ *
+ * @author Florencia De Mollein <florenciademollein@gmail.com>
+ * @param {{
+ *    name: string,
+ *    label: string,
+ *    seccionForm: string
+ * }} props
+ * @returns {JSX.Element}
+ */
 
 const InputEspecie = ({ name, label, seccionForm }) => {
+  
   const [mostrarPopup, setMostrarPopup] = useState(false);
   const { handleFormulario } = useContext(ContextoFormulario);
+  let [ pageOffset, setPageOffset ] = useState(0);
+
+  // Usando useQuery obtenemos las especies de Pokemon (paginadas) y las variables isLoading e isError
+  const { data, isLoading, isError } = useQuery([ "EspeciesPokemon", pageOffset ], () => getEspeciesPokemon(pageOffset));
 
   const elegirEspecie = (e, nombreEspecie) => {
     e.preventDefault();
@@ -27,7 +40,7 @@ const InputEspecie = ({ name, label, seccionForm }) => {
 
   const renderizarEspecies = () => (
     <>
-      {especies.map((especie) => (
+      {data?.results?.map((especie) => (
         <button
           key={especie.name}
           className="botones-especie"
@@ -44,10 +57,13 @@ const InputEspecie = ({ name, label, seccionForm }) => {
       {mostrarPopup && (
         <div className="popup-especie">
           <h4>Seleccionar especie</h4>
-          <div className="contenedor-especies">{renderizarEspecies()}</div>
+          <div className="contenedor-especies">{renderizarEspecies()}
+            { isLoading && <p>Cargando especies...</p>}
+            { isError && <p>Error al cargar especies...</p>}
+          </div>
           <div className="paginador">
-            <button className="boton-anterior">Anterior</button>
-            <button className="boton-siguiente">Siguiente</button>
+            <button className="boton-anterior" onClick={() => setPageOffset(pageOffset - 20)}>Anterior</button>
+            <button className="boton-siguiente"  onClick={() => setPageOffset(pageOffset + 20)}>Siguiente</button>
           </div>
         </div>
       )}
@@ -60,6 +76,12 @@ const InputEspecie = ({ name, label, seccionForm }) => {
       </button>
     </div>
   );
+};
+
+InputEspecie.propTypes = {
+  name : PropTypes.string.isRequired,
+  label : PropTypes.string.isRequired,
+  seccionForm : PropTypes.string.isRequired
 };
 
 export default InputEspecie;
