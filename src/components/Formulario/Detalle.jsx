@@ -2,10 +2,11 @@ import React, { useContext, useEffect } from "react";
 import { useMutation } from "react-query";
 import { ContextoFormulario } from "../../context/ContextoFormulario";
 import { capitalizarPrimeraLetra } from "../../utils/capitalizarPrimeraLetra";
+import { URL_POST_FORM } from "../../constants";
 
 // Función para enviar formulario al servidor cuando se invoca el metodo mutate
 const enviarFormulario = async (data) => {
-  const response = await fetch("https://jsonplaceholder.typicode.com/todos", {
+  const response = await fetch(URL_POST_FORM, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
